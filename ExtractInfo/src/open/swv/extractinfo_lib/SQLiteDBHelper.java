@@ -55,7 +55,7 @@ public class SQLiteDBHelper {
 	public boolean init(){
 		Connection conn = getConnection();
 
-		// #1. Table µî·Ï
+		// #1. Table
 		Statement stat;
 		try {
 			stat = conn.createStatement();
@@ -315,14 +315,10 @@ public class SQLiteDBHelper {
             	String filename = rs.getString("filename");
             	String[] start_position = getSeperateDot(rs.getString("start_position"));
             	String[] end_position = getSeperateDot(rs.getString("end_position"));
-            	//System.out.println(start_position[0]+"," +start_position[1]);
-
+            
             	int line = Integer.parseInt( start_position[0] );
             	int start_pos = Integer.parseInt( start_position[1] );
             	int end_pos = Integer.parseInt( end_position[1] );
-
-            	//filename = filename.replaceFirst("/opt/workspace2.edu/Exampe1", "D:/eclipse/aaa");
-            	//if(rs.getString("filename").equals("/opt/workspace2.edu/Exampe1/src/main/java/egovframework/example/sample/service/SampleVO.java"))
 
         		File file = new File(filename);
         		if( file.isFile() )
@@ -336,9 +332,6 @@ public class SQLiteDBHelper {
 						  // Print the content on the console
 							if(i == line)
 							{
-								//System.out.println (strLine);
-								//System.out.println (getType(strLine, strLine.substring(start_pos, end_pos)));
-								//System.out.println (strLine.substring(start_pos, end_pos));
 								String type = getType(strLine, strLine.substring(start_pos, end_pos));
 								insertInstanceVariablesType(type, rs);
 							}
