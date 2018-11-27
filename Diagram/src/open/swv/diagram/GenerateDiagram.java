@@ -70,9 +70,7 @@ public class GenerateDiagram {
 		contents = "digraph xx {\n\tnode[shape=record, style=filled, fillcolor=lightyellow];\n";
 		contents += callGraph();
 		contents += "}";
-//		System.out.println(contents);
 
-//		genDot("D:/graphviz-2.38/release/bin/dot.exe", contents, "/ClassDiagram.jpg");
 		genDot(path, contents, graph + File.separator + "CouplingDiagram.png");
 		couplingDiagram = graph + File.separator + "CouplingDiagram.png";
 	}
@@ -89,11 +87,9 @@ public class GenerateDiagram {
 		while (rs.next()) {
 			String name = rs.getString("name");
 			classList.add(name);
-//			System.out.println(name);
 		}
 
 		for (String className : classList) {
-//			System.out.println(className);
 			contents += "\t" + className + " [label=<{";
 
 			rs = cStat.executeQuery("select name, attributes from Classes where name='" + className + "'");
@@ -340,16 +336,7 @@ public class GenerateDiagram {
 				contents += " \"]\n";
 			}
 		}
-//		Statement stat2 = conn.createStatement();
-//		ResultSet rs2 = stat2.executeQuery("select distinct ref_class, class from RefersTo where ref_class in (select name from Classes)");
-//		while (rs2.next()) {
-//			String refer = rs2.getString("class");
-//			String referred = rs2.getString("ref_class");
-//			if (!refer.equals(referred)) {
-////				System.out.println(refer + ", " + referred);
-//				contents += "\t\t\"" + refer + "\"->\"" + referred + "\" [style=solid, arrowhead=vee, label=\"" + couplingValue.get(refer + "->" + referred) + "\"];\n";
-//			}
-//		}
+
 		stat.close();
 		rs.close();
 
@@ -492,19 +479,7 @@ public class GenerateDiagram {
 				}
 			}
 
-//			PreparedStatement preStat = conn.prepareStatement("insert or IGNORE into Coupling values (?, ?, ?, ?, ?, ?, ?, ?)");
-//			preStat.setString(1, rClass);
-//			preStat.setString(2, rdClass);
-//			preStat.setString(3, "\"" + data_coupling + "\"");
-//			preStat.setString(4, "\"" + stamp_coupling + "\"");
-//			preStat.setString(5, "\"" + control_coupling + "\"");
-//			preStat.setString(6, "\"" + external_coupling + "\"");
-//			preStat.setString(7, "\"" + common_coupling + "\"");
-//			preStat.setString(8, "\"" + content_coupling + "\"");
-
 			Statement stat4 = conn.createStatement();
-//			stat4.executeUpdate("insert into Coupling values ('" + rClass + "', '" + rdClass + "', '" + data_coupling + "', '" + stamp_coupling + "', '" + control_coupling + "', '" + external_coupling + "', '" + common_coupling + "', '" + content_coupling + "')");
-//			System.out.println("insert into Coupling values ('" + rClass + "', '" + rdClass + "', '" + data_coupling + "', '" + stamp_coupling + "', '" + control_coupling + "', '" + external_coupling + "', '" + common_coupling + "', '" + content_coupling + "')");
 
 			int allCoupling = data_coupling + stamp_coupling + control_coupling + external_coupling + common_coupling + content_coupling;
 			if (couplingValue.containsKey(rClass + "->" + rdClass)) {
@@ -517,11 +492,8 @@ public class GenerateDiagram {
 				external += external_coupling;
 				common += common_coupling;
 				content += content_coupling;
-//				System.out.println("if" + value + ", " + rClass + "->" + rdClass);
 			} else {
 				stat4.executeUpdate("insert into Coupling values ('" + caller + "', '" + callee + "', '" + data + "', '" + stamp + "', '" + control + "', '" + external + "', '" + common + "', '" + content + "')");
-//				System.out.println("insert into Coupling values ('" + caller + "', '" + callee + "', '" + data + "', '" + stamp + "', '" + control + "', '" + external + "', '" + common + "', '" + content + "')");
-
 				couplingValue.put(rClass + "->" + rdClass, allCoupling);
 				caller = rClass;
 				callee = rdClass;
@@ -531,11 +503,9 @@ public class GenerateDiagram {
 				external = external_coupling;
 				common = common_coupling;
 				content = content_coupling;
-//				System.out.println("else" + allCoupling + ", " + rClass + "->" + rdClass);
 			}
 		}
 		stat.executeUpdate("insert into Coupling values ('" + caller + "', '" + callee + "', '" + data + "', '" + stamp + "', '" + control + "', '" + external + "', '" + common + "', '" + content + "')");
-//		System.out.println("insert into Coupling values ('" + caller + "', '" + callee + "', '" + data + "', '" + stamp + "', '" + control + "', '" + external + "', '" + common + "', '" + content + "')");
 		rs.close();
 		stat.close();
 
