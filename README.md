@@ -90,7 +90,7 @@ java -jar /usr/local/SWV/toolchain/AnnotationTerminator.jar -input /usr/local/SW
 
 2. filelist.dat 생성
 
-filelist.dat 파일이 있다면 삭제를 하고, **/usr/local/SWV/dev/src** 하위의 파일목록으로 filelist.dat를 생성한다.
+filelist.dat 파일이 있다면 삭제를 하고, **/usr/local/SWV/dev/src** 하위의 파일목록으로 filelist.dat를 생성한다
 
 ```bash
 # rm -rf /usr/local/SWV/dev/filelist.dat
