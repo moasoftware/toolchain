@@ -25,10 +25,8 @@ public class GenDataFromSNDB {
 			System.out.println(dir + " is not exists");
 			return;
 		}
-		for(File f: dirFile.listFiles()) {
-			//if (f.getAbsolutePath().endsWith(".lv")) {
+		for(File f: dirFile.listFiles()) {			
 				parseSANDB(cmd, f);
-			//}
 		}
 		
 	}
@@ -52,17 +50,15 @@ public class GenDataFromSNDB {
 			int index = 0;
 			String prepardStatement = null;
 			while ((line = input.readLine()) != null) {
-				//{} 인것 부터 추출
-				//System.out.println(line);
+				//{} extract
 				Vector<String> dataList = new Vector<String>();
 				String[] itemAttributeList = line.split("\\{");
 				String[] itemList = itemAttributeList[0].split(" |;");
 				for(int i=0; i < itemList.length; i++)
 				{
 					dataList.add(itemList[i].trim());
-					//System.out.println(itemList[i]);
 				}
-				//마지막에 입력
+				//input to last one
 				for(int i=1; i < itemAttributeList.length; i++)
 				{
 					itemAttributeList[i] = itemAttributeList[i].replaceAll("\\}", "");
