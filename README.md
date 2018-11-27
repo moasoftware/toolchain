@@ -3,7 +3,7 @@
 ![toolchain](./toolchain.png)
 * Source Navigator
 
-소스 네비게이터는 파서로써 소스 코드를 스캔하고 기존 C, C++, Java, Tcl, FORTRAN, COBOL 등과 같은 프로그램에서 정보를 추출하여 dbdump를 생성한다.
+소스 네비게이터는 파서로써 소스 코드를 고 기존 C, C++, Java, Tcl, FORTRAN, COBOL 등과 같은 프로그램에서 정보를 추출하여 dbdump를 생성한다.
 
 * SQLite
 
