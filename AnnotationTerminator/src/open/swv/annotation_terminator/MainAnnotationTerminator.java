@@ -76,10 +76,8 @@ public class MainAnnotationTerminator {
 			System.exit(0);;
 		}
 
-		//src 상위폴더까지만 지정
 		String input = intputDirectory;
 
-		//output경로에 src폴더를 복사해 놓은 후에 실행해야 덮어쓰기 가능
 		String output = outputDirectory;
 
 		GetFileDir gfd = new GetFileDir();
