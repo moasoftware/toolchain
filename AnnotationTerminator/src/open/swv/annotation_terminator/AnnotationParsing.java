@@ -36,7 +36,7 @@ public class AnnotationParsing {
 			}
 		}
 		String code =  cu.toString();
-		//generic type 제거
+		//generic type
 		code = code.replaceAll("<([^<])*>", "");
 
 		return code;
@@ -46,7 +46,6 @@ public class AnnotationParsing {
 		while (variableAnnot.hasNext()) {
 			variableAnnot.next();
 			variableAnnot.remove();
-			//인스턴스 변수 annotation 제거
 		}
 	}
 
@@ -57,7 +56,7 @@ public class AnnotationParsing {
 		while (nodeAnnot.hasNext()) {
 			nodeAnnot.next();
 			nodeAnnot.remove();
-			//메서드의 annotation 제거
+			//method annotation
 		}
 
 		NodeList<Parameter> nodeParams = method.getParameters();
@@ -67,7 +66,7 @@ public class AnnotationParsing {
 			 while (annotationsIterator.hasNext()) {
 		        annotationsIterator.next();
 		        annotationsIterator.remove();
-				//파라미터의 annotation 제거
+				//parameter annotation
 			}
 		}
 	}
